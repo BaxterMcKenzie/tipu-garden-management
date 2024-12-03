@@ -7,7 +7,7 @@ import Seo from "../components/Seo";
 const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
 
 const ProjectTypePosts = () => {
-  const { id } = useParams(); // Retrieve the taxonomy ID or slug from the URL
+  const { id } = useParams();
   const [posts, setPosts] = useState([]);
   const [taxonomy, setTaxonomy] = useState({});
   const [loading, setLoading] = useState(true);
@@ -22,8 +22,7 @@ const ProjectTypePosts = () => {
         setTaxonomy(res.data);
       })
       .catch((err) => {
-        console.error("Error fetching taxonomy:", err); // Log the error
-        setTaxonomy({ name: "Unknown Project Type" }); // Fallback
+        setTaxonomy({ name: "Unknown Project Type" }); 
       });
   }, [taxonomyEndpoint]);
   
@@ -37,13 +36,12 @@ const ProjectTypePosts = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching posts:", err);
         setLoading(false);
       });
   }, [postsEndpoint]);
 
   const getExcerpt = (content, wordLimit = 50) => {
-    const words = content.replace(/<[^>]+>/g, "").split(/\s+/); // Remove HTML tags
+    const words = content.replace(/<[^>]+>/g, "").split(/\s+/);
     return words.length > wordLimit
       ? words.slice(0, wordLimit).join(" ") + "..."
       : content;

@@ -3,28 +3,27 @@ import wooCommerceApi from "../woocommerceApi";
 import { CartContext } from "../context/CartContext";
 import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
-import Toast from "../components/Toast"; // Import the Toast component
-import LoadingSpinner from "../components/LoadingSpinner"; // Import the LoadingSpinner component
-import { Link } from "react-router-dom"; // Import Link for navigation
+import Toast from "../components/Toast"; 
+import LoadingSpinner from "../components/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [toastMessage, setToastMessage] = useState(""); // State for toast message
-  const [toastType, setToastType] = useState(""); // State for toast type
-  const [loading, setLoading] = useState(true); // Loading state
-  const { addToCart } = useContext(CartContext); // Access addToCart from CartContext
+  const [toastMessage, setToastMessage] = useState(""); 
+  const [toastType, setToastType] = useState("");
+  const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await wooCommerceApi.get("/products");
         setProducts(response.data);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching products:", error);
         setToastMessage("Failed to load products. Please try again.");
         setToastType("error");
-        setLoading(false); // Set loading to false even if there is an error
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -32,11 +31,10 @@ const Shop = () => {
 
   const handleAddToCart = (product) => {
     try {
-      addToCart(product); // Add product to cart
+      addToCart(product);
       setToastMessage(`${product.name} added to cart!`);
       setToastType("success");
     } catch (error) {
-      console.error("Error adding product to cart:", error);
       setToastMessage("Error adding product to cart.");
       setToastType("error");
     }
@@ -134,7 +132,7 @@ const Shop = () => {
       <Toast
         message={toastMessage}
         type={toastType}
-        onClose={() => setToastMessage("")} // Clear toast message when closed
+        onClose={() => setToastMessage("")}
       />
     </>
   );

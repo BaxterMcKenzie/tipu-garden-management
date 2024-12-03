@@ -5,7 +5,7 @@ const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Smooth scrolling animation
+      behavior: "smooth",
     });
   };
 
@@ -14,7 +14,7 @@ const Footer = () => {
       <div 
         className="footer-logo" 
         onClick={handleScrollToTop} 
-        style={{ cursor: "pointer" }} // Make the logo clickable
+        style={{ cursor: "pointer" }}
       >
         <img
           className="nav-logo"

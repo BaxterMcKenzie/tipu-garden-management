@@ -22,7 +22,9 @@ const Post = () => {
         setPost(response.data);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoading(false);
+      });
   }, [id]);
 
   // Featured image check

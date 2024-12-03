@@ -12,7 +12,6 @@ import LoadingSpinner from "./components/LoadingSpinner";
 const App = () => {
   const { bgColor, fontFamily, navColor } = useCustomizer();
 
-  // Check if the customizer values are loaded
   const isCustomizerLoaded = bgColor && fontFamily && navColor;
 
   return (

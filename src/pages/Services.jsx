@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
-import LoadingSpinner from "../components/LoadingSpinner"; // Import the LoadingSpinner component
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
 
@@ -11,7 +11,6 @@ const Services = () => {
   const [servicePosts, setServicePosts] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Change endpoint to fetch "services" posts
   const endpoint = `${baseUrl}/services?_embed&per_page=100`;
 
   useEffect(() => {
@@ -21,11 +20,13 @@ const Services = () => {
         setServicePosts(response.data);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
   const getExcerpt = (content, wordLimit = 80) => {
-    const words = content.replace(/<[^>]+>/g, "").split(/\s+/); // Remove HTML tags
+    const words = content.replace(/<[^>]+>/g, "").split(/\s+/); 
     return words.length > wordLimit
       ? words.slice(0, wordLimit).join(" ") + "..."
       : content;

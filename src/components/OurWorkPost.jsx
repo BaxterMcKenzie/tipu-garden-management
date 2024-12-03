@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"; // Added Link
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Seo from "../components/Seo";
@@ -37,7 +37,7 @@ const Taxonomies = ({ post }) => {
           {taxonomyGroup.map((taxonomy) => (
             <Link
               key={taxonomy.id}
-              to={`/our-work/project-type/${taxonomy.id}`} // Link to project type
+              to={`/our-work/project-type/${taxonomy.id}`}
               className="taxonomy-term-pill"
             >
               {taxonomy.name}
@@ -82,7 +82,7 @@ const OurWorkPost = () => {
     "https://via.placeholder.com/150";
 
   const getSecondImage =
-    post.acf?.["second-featured-image"] || "https://via.placeholder.com/150"; // Access the second image from SCF
+    post.acf?.["second-featured-image"] || "https://via.placeholder.com/150";
 
   return (
     <>

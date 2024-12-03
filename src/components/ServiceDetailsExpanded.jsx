@@ -69,7 +69,6 @@ const ServiceDetailsExpanded = () => {
         const response = await axios.get(`${baseUrl}/service_options?_embed&slug=${slug}`);
         setService(response.data[0]); // Get the first matching service
       } catch (error) {
-        console.error("Error fetching service details:", error);
       } finally {
         setLoading(false);
       }

@@ -23,7 +23,6 @@ const ServiceDetailsType = () => {
         setTaxonomy(res.data || { name: "Unknown Difficulty Level" });
       })
       .catch((err) => {
-        console.error("Error fetching taxonomy:", err);
         setTaxonomy({ name: "Unknown Difficulty Level" });
       });
   }, [taxonomyEndpoint]);
@@ -36,7 +35,6 @@ const ServiceDetailsType = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching posts:", err);
         setPosts([]);
         setLoading(false);
       });

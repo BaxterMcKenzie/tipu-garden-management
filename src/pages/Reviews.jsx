@@ -3,8 +3,8 @@ import axios from "axios";
 import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
 import TestimonialSwiper from "../components/TestimonalSwiper";
-import Toast from "../components/Toast"; // Import the Toast component
-import LoadingSpinner from "../components/LoadingSpinner"; // Import the LoadingSpinner component
+import Toast from "../components/Toast";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
 
@@ -14,7 +14,7 @@ const Reviews = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
 
-  const reviewFormRef = useRef(null);  // Create a ref for the form
+  const reviewFormRef = useRef(null);
 
   // State for the form inputs
   const [name, setName] = useState("");
@@ -33,7 +33,6 @@ const Reviews = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching testimonials:", err);
         setLoading(false);
       });
   }, []);
@@ -44,7 +43,6 @@ const Reviews = () => {
     event.preventDefault();
 
     if (!formEndpoint) {
-      console.error("Form endpoint is not defined.");
       return;
     }
 
@@ -70,7 +68,6 @@ const Reviews = () => {
       });
   };
 
-  // Show spinner while loading testimonials
   if (loading) {
     return (
       <div className="loading-container">

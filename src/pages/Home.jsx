@@ -19,14 +19,13 @@ const Home = () => {
     axios
       .get(endpoint)
       .then((res) => {
-        setTestimonials(res.data);  // Save the testimonial data
+        setTestimonials(res.data); 
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching testimonials:", err);
         setLoading(false);
       });
-  }, []); // Empty dependency array to fetch data once on component mount
+  }, []); 
 
   if (loading) {
     return <LoadingSpinner />;

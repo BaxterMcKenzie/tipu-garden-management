@@ -16,11 +16,11 @@ const AboutPost = () => {
     axios
       .get(endpoint)
       .then((response) => {
-        setPost(response.data[0]); // Assuming the first result is the correct post
+        setPost(response.data[0]);
         setLoading(false);
       })
       .catch((error) => {
-        setLoading(false); // Set loading to false even on error
+        setLoading(false);
       });
   }, [slug]);
 
@@ -29,14 +29,14 @@ const AboutPost = () => {
   }
 
   if (!post) {
-    return <p>Post not found.</p>; // Graceful error handling
+    return <p>Post not found.</p>;
   }
 
   const getFeaturedImage = (post) =>
     post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
     "https://via.placeholder.com/150";
 
-  const isEven = 0; // For now, we're assuming the layout will always be 'odd' for a single post
+  const isEven = 0;
 
   return (
     <>

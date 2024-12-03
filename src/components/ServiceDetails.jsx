@@ -19,7 +19,6 @@ const ServiceDetails = () => {
         const response = await axios.get(mediaHref);
         return response.data.source_url || "https://via.placeholder.com/150";
       } catch (error) {
-        console.error("Error fetching media URL:", error);
         return "https://via.placeholder.com/150";
       }
     };
@@ -54,7 +53,6 @@ const ServiceDetails = () => {
   
         setServiceOptions(filteredOptions);
       } catch (error) {
-        console.error("Error fetching service details or options:", error);
       } finally {
         setLoading(false);
       }

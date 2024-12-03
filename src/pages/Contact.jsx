@@ -26,7 +26,6 @@ const Contact = () => {
     event.preventDefault();
 
     if (!formEndpoint) {
-      console.error("Form endpoint is not defined.");
       return;
     }
 

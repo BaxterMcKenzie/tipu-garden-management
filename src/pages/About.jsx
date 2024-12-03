@@ -20,7 +20,9 @@ const About = () => {
         setAboutPosts(response.data);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoading(false);
+      });
   }, []);
 
   const getExcerpt = (content, wordLimit = 50) => {

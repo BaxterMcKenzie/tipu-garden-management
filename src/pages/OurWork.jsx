@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom";
 import axios from "axios";
 import PageHeader from "../components/PageHeader";
 import Seo from "../components/Seo";
-import LoadingSpinner from "../components/LoadingSpinner"; // Import the LoadingSpinner component
+import LoadingSpinner from "../components/LoadingSpinner"; 
 
 const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
 
@@ -11,7 +11,6 @@ const OurWork = () => {
   const [workPosts, setWorkPosts] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Change endpoint to fetch "our work" posts
   const endpoint = `${baseUrl}/our_work?_embed`;
 
   useEffect(() => {
@@ -21,7 +20,9 @@ const OurWork = () => {
         setWorkPosts(response.data);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoading(false);
+      });
   }, []);
 
   const getExcerpt = (content, wordLimit = 50) => {
@@ -37,7 +38,7 @@ const OurWork = () => {
         post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
         "https://via.placeholder.com/150";
 
-      const isEven = index % 2 === 1; // Determine if the post is even (alternating layout)
+      const isEven = index % 2 === 1;
 
       return (
         <div
